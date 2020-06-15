@@ -22,8 +22,6 @@ const OrderForm = () =>{
 
     const schema = yup.object().shape({
         name: yup.string().required().min(2),
-        size: yup.required(),
-        sauce: yup.required(),
         special: yup.string(),
         ham: yup.boolean(),
         sausage: yup.boolean(),
@@ -55,6 +53,7 @@ const OrderForm = () =>{
                 <CardImg src={require('./Assets/Pizza.jpg')} style={{width:'50%', margin:'0 auto'}} />
             </Card>
             <Form
+            data-cy='submit'
             onSubmit = {(e)=>{
                 e.preventDefault()
                 submit()
@@ -63,7 +62,7 @@ const OrderForm = () =>{
             >
                 <FormGroup>
                     <legend>Name</legend>
-                    <Input type='name' name="name" value={formData.name} onChange={handleChange} />
+                    <Input type='name' name="name" data-cy="name" value={formData.name} onChange={handleChange} />
                 </FormGroup>
                 <FormGroup>
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -124,25 +123,25 @@ const OrderForm = () =>{
                     <legend>Toppings</legend>
                     <FormGroup check>
                         <Label check>
-                            <Input type='checkbox' name='ham' checked={formData.ham} onChange={handleTopping} />
+                            <Input type='checkbox' name='ham' data-cy='checkbox1' checked={formData.ham} onChange={handleTopping} />
                             Ham
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type='checkbox' name='sausage' checked={formData.sausage} onChange={handleTopping} />
+                            <Input type='checkbox' name='sausage' data-cy='checkbox2' checked={formData.sausage} onChange={handleTopping} />
                             Sausage
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type='checkbox' name='peppers' checked={formData.peppers} onChange={handleTopping} />
+                            <Input type='checkbox' name='peppers' data-cy='checkbox3' checked={formData.peppers} onChange={handleTopping} />
                             Green Peppers
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                            <Input type='checkbox' name='olives' checked={formData.olives} onChange={handleTopping} />
+                            <Input type='checkbox' name='olives' data-cy='checkbox4' checked={formData.olives} onChange={handleTopping} />
                             Black Olives
                         </Label>
                     </FormGroup>
